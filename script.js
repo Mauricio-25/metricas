@@ -213,11 +213,11 @@ function calcular() {
 
         for(let i=0; i<fasesEsf[tp][0].length; i++) {
             resultadoCd[i] = (((fasesEsf[tp][0][i] / 100) * cd) / (totalEsf/100)).toFixed(2);
-            valor3[i].innerHTML = resultadoCd[i];
+            valor3[i].innerHTML = formatearNumeroConComas(resultadoCd[i]);
         }
 
         testeoPorcentaje3.innerHTML = fasesEsf[tp][0][0]
-        testeoValor3.innerHTML = resultadoCd[0];
+        testeoValor3.innerHTML = formatearNumeroConComas(resultadoCd[0]);
 
     } 
     else if (aproximacion == valores[1]) {
@@ -260,11 +260,11 @@ function calcular() {
 
         for(let i=0; i<fasesEsf[tp][1].length; i++) {
             resultadoCd[i] = (((fasesEsf[tp][1][i] / 100) * cd) / (totalEsf/100)).toFixed(2);
-            valor3[i].innerHTML = resultadoCd[i];
+            valor3[i].innerHTML = formatearNumeroConComas(resultadoCd[i]);
         }
 
         testeoPorcentaje3.innerHTML = fasesEsf[tp][1][0]
-        testeoValor3.innerHTML = resultadoCd[0];
+        testeoValor3.innerHTML = formatearNumeroConComas(resultadoCd[0]);
     }
 
     else if (aproximacion == valores[2]) {
@@ -301,11 +301,11 @@ function calcular() {
 
         for(let i=0; i<fasesEsf[tp][2].length; i++) {
             resultadoCd[i] = (((fasesEsf[tp][2][i] / 100) * cd) / (totalEsf/100)).toFixed(2);
-            valor3[i].innerHTML = resultadoCd[i];
+            valor3[i].innerHTML = formatearNumeroConComas(resultadoCd[i]);
         }
 
         testeoPorcentaje3.innerHTML = fasesEsf[tp][2][0]
-        testeoValor3.innerHTML = resultadoCd[0];
+        testeoValor3.innerHTML = formatearNumeroConComas(resultadoCd[0]);
     }
 
     else if (aproximacion == valores[3]) {
@@ -341,11 +341,11 @@ function calcular() {
 
         for(let i=0; i<fasesEsf[tp][3].length; i++) {
             resultadoCd[i] = (((fasesEsf[tp][3][i] / 100) * cd) / (totalEsf/100)).toFixed(2);
-            valor3[i].innerHTML = resultadoCd[i];
+            valor3[i].innerHTML = formatearNumeroConComas(resultadoCd[i]);
         }
 
         testeoPorcentaje3.innerHTML = fasesEsf[tp][3][0]
-        testeoValor3.innerHTML = resultadoCd[0];
+        testeoValor3.innerHTML = formatearNumeroConComas(resultadoCd[0]);
     }
 
     else if (aproximacion == valores[4]) {
@@ -382,11 +382,11 @@ function calcular() {
 
         for(let i=0; i<fasesEsf[tp][4].length; i++) {
             resultadoCd[i] = (((fasesEsf[tp][4][i] / 100) * cd) / (totalEsf/100)).toFixed(2);
-            valor3[i].innerHTML = resultadoCd[i];
+            valor3[i].innerHTML = formatearNumeroConComas(resultadoCd[i]);
         }
 
         testeoPorcentaje3.innerHTML = fasesEsf[tp][4][0]
-        testeoValor3.innerHTML = resultadoCd[0];
+        testeoValor3.innerHTML = formatearNumeroConComas(resultadoCd[0]);
     }
 
 
