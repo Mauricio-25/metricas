@@ -30,6 +30,7 @@ const tdesInput = document.querySelector("#tdes");
 const pInput = document.querySelector("#p");
 const cpmInput = document.querySelector("#cpm");
 const cdInput = document.querySelector("#cd");
+const aproximacionInput = document.querySelector("#aprox")
 
 const textoEsfInput = document.querySelector("#textoEsf");
 const textoTdesInput = document.querySelector("#textoTdes");
@@ -398,6 +399,7 @@ function calcular() {
     pInput.innerHTML = p.toFixed(2);
     cpmInput.innerHTML = cpm.toFixed(2);
     cdInput.innerHTML = formatearNumeroConComas(cd.toFixed(2));
+    aproximacionInput.innerHTML = aproximacion;
     textoEsfInput.innerHTML = textoEsf;
     textoTdesInput.innerHTML = textoTdes;
     porcentajeTotal1.innerHTML = totalEsf;
@@ -426,4 +428,33 @@ function redondearAlMasCercano(numero, valores) {
     });
 
     return valorMasCercano;
+}
+
+
+// ! NOTIFICACION
+
+const mensaje = document.querySelector(".mensaje");
+const titleInput = document.querySelector(".title");
+const titleSmInput = document.querySelector(".title-sm");
+
+let timerId; // Variable para almacenar el identificador del temporizador
+
+function abrirMensaje(contenedor) {
+    let title = contenedor.getAttribute('title');
+    let titleSm = contenedor.getAttribute('data-title-sm');
+
+    titleInput.innerHTML = title;
+    titleSmInput.innerHTML = titleSm;
+
+    mensaje.classList.remove("translate-y-full");
+
+    // Limpiar el temporizador anterior, si existe
+    if (timerId) {
+        clearTimeout(timerId);
+    }
+
+    // Iniciar un nuevo temporizador
+    timerId = setTimeout(() => {
+        mensaje.classList.add("translate-y-full");
+    }, 3000);
 }

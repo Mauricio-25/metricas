@@ -61,6 +61,13 @@
         </ul>
     </nav>
 
+    <aside class="mensaje fixed bottom-0 left-0 w-screen flex justify-center translate-y-full duration-300">
+        <div class="bg-white w-4/5 border-2 rounded-lg p-4 text-center flex flex-col gap-2">
+            <p class="title"></p>
+            <p class="title-sm text-sm text-stone-500"></p>
+        </div>
+    </aside>
+
     <main>
         <section class="flex items-center flex-col gap-8 py-10 px-8" id="fase1">
             <div class="flex flex-col gap-1 items-center">
@@ -69,7 +76,7 @@
             </div>
 
             <article class="flex flex-col gap-5">
-                <div title="Definición de Requerimientos del Sistema (RS)" class="flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Definición de Requerimientos del Sistema (RS)" data-title-sm="" onclick="abrirMensaje(this)" class="flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <span>RS = </span>
                     <input id="rs" type="number" class="px-2 py-1 bg-[#0076CC] rounded-lg w-16 text-white outline-none text-center">
                 </div>
@@ -83,7 +90,7 @@
             </div>
 
             <article class="flex flex-col items-center gap-5">
-                <div title="Tipo/Modo del Proyecto (TP)" class="elemento flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Tipo/Modo del Proyecto (TP)" data-title-sm="" onclick="abrirMensaje(this)" class="elemento flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <span>TP = </span>
                     <select name="" id="tp" class="text-sm px-2 py-1 bg-[#0076CC] rounded-lg text-white outline-none text-center">
                         <option value="0">Orgánico o Familiar (OF)</option>
@@ -92,7 +99,7 @@
                     </select>
                 </div>
 
-                <div title="Funciones del Sistema (F) → funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Funciones del Sistema (F)" data-title-sm="Funciones del sistema" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>F = </span>
                         <span>280 * RS</span>
@@ -103,7 +110,7 @@
                     </div>
                 </div>
 
-                <div title="Miles de Funciones del Sistema (MF) → miles de funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Miles de Funciones del Sistema (MF)" data-title-sm="Miles de funciones del sistema" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>MF = </span>
                         <span>F / 1000</span> 
@@ -114,7 +121,7 @@
                     </div>
                 </div>
 
-                <div title="Esfuerzo del Proyecto de Desarrollo (ESF) → personas / proyecto" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Esfuerzo del Proyecto de Desarrollo (ESF)" data-title-sm="Personas / Proyecto" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>ESF = </span>
                         <span id="textoEsf">3.0 (MF) ^ 1.12</span> 
@@ -125,7 +132,7 @@
                     </div>
                 </div>
 
-                <div title="Tiempo de Desarrollo del Proyecto (TDES) → meses / proyecto" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Tiempo de Desarrollo del Proyecto (TDES)" data-title-sm="Meses / Proyecto" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>TDES = </span>
                         <span id="textoTdes">2.5 (ESF) ^ 0.35</span> 
@@ -145,7 +152,7 @@
             </div>
 
             <article class="flex flex-col items-center gap-5">
-                <div title="Funciones del Sistema (F) → funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Productividad (P)" data-title-sm="Funciones por persona en proyecto" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>P = </span>
                         <span>F / ESF</span>
@@ -156,7 +163,7 @@
                     </div>
                 </div>
 
-                <div title="Miles de Funciones del Sistema (MF) → miles de funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Cantidad de Personas Mes (CPM)" data-title-sm="Personas / Mes" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>CH = CPM = </span>
                         <span>ESF / TDES</span> 
@@ -167,7 +174,7 @@
                     </div>
                 </div>
 
-                <div title="Esfuerzo del Proyecto de Desarrollo (ESF) → personas / proyecto" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                <div title="Costo de Desarrollo (CD)" data-title-sm="Moneda local (Soles)" onclick="abrirMensaje(this)" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
                     <div class="flex gap-6 items-center">
                         <span>CD = </span>
                         <span>SPM o SMV * ESF</span> 
@@ -187,6 +194,12 @@
             </div>
 
             <article class="flex flex-col items-center gap-5">
+
+                <div title="Aproximación MF" data-title-sm="Miles de funciones del sistema" onclick="abrirMensaje(this)" class="elemento flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <span>Aproximación MF = </span>
+                    <span id="aprox" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                </div>
+
                 <div class="">
                     <div>
                         <div class="grid grid-cols-2">
