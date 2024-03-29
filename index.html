@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/745852fa0a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            font-family: "Poppins", sans-serif;
+        }
+
+        @media (width < 400px) {
+            .elemento {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+
+
+
+
+    <header class="flex justify-between items-center bg-[#4678FB] text-white py-3 px-8 sticky top-0 left-0 z-20">
+        <h1 class="font-medium">Métricas</h1>
+        <i class="fa-solid fa-bars text-2xl cursor-pointer" id="bars"></i>
+    </header>
+
+    <nav class="h-screen w-screen top-0 left-0 bg-[#DCE6FF] fixed -translate-y-full duration-300" id="nav">
+        <ul class="h-full flex flex-col justify-evenly items-center">
+            <li class="w-full flex justify-center">
+                <a href="#fase1" class="py-4 px-6">Fase 1</a>
+            </li>
+
+            <li class="w-full flex justify-center">
+                <a href="#fase2" class="py-4 px-6">Fase 2</a>
+            </li>
+
+            <li class="w-full flex justify-center">
+                <a href="#fase3" class="py-4 px-6">Fase 3</a>
+            </li>
+
+            <li class="w-full flex justify-center">
+                <a href="#fase4" class="py-4 px-6">Fase 4</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="flex items-center flex-col gap-8 py-10 px-8" id="fase1">
+            <div class="flex flex-col gap-1 items-center">
+                <span class="text-sm text-[#4678FB] font-bold">FASE I</span>
+                <h2 class="font-bold text-lg">Métricas Base</h2>
+            </div>
+
+            <article class="flex flex-col gap-5">
+                <div title="Definición de Requerimientos del Sistema (RS)" class="flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <span>RS = </span>
+                    <input id="rs" type="number" class="px-2 py-1 bg-[#0076CC] rounded-lg w-16 text-white outline-none text-center">
+                </div>
+            </article>
+        </section>
+
+        <section class="flex items-center flex-col gap-8 py-10 px-8" id="fase2">
+            <div class="flex flex-col gap-1 items-center">
+                <span class="text-sm text-[#4678FB] font-bold">FASE II</span>
+                <h2 class="font-bold text-lg">Análisis de Métricas</h2>
+            </div>
+
+            <article class="flex flex-col items-center gap-5">
+                <div title="Tipo/Modo del Proyecto (TP)" class="elemento flex items-center gap-6 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <span>TP = </span>
+                    <select name="" id="tp" class="text-sm px-2 py-1 bg-[#0076CC] rounded-lg text-white outline-none text-center">
+                        <option value="0">Orgánico o Familiar (OF)</option>
+                        <option value="1">Semilibre (SL)</option>
+                        <option value="2">Fuertemente Restringido (FR)</option>
+                    </select>
+                </div>
+
+                <div title="Funciones del Sistema (F) → funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>F = </span>
+                        <span>280 * RS</span>
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>F = </span>
+                        <span id="f" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+
+                <div title="Miles de Funciones del Sistema (MF) → miles de funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>MF = </span>
+                        <span>F / 1000</span> 
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>MF = </span>
+                        <span id="mf" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+
+                <div title="Esfuerzo del Proyecto de Desarrollo (ESF) → personas / proyecto" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>ESF = </span>
+                        <span id="textoEsf">3.0 (MF) ^ 1.12</span> 
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>ESF = </span>
+                        <span id="esf" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+
+                <div title="Tiempo de Desarrollo del Proyecto (TDES) → meses / proyecto" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>TDES = </span>
+                        <span id="textoTdes">2.5 (ESF) ^ 0.35</span> 
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>TDES = </span>
+                        <span id="tdes" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="flex items-center flex-col gap-8 py-10 px-8" id="fase3">
+            <div class="flex flex-col gap-1 items-center">
+                <span class="text-sm text-[#4678FB] font-bold">FASE III</span>
+                <h2 class="font-bold text-lg">Métricas Derivadas</h2>
+            </div>
+
+            <article class="flex flex-col items-center gap-5">
+                <div title="Funciones del Sistema (F) → funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>P = </span>
+                        <span>F / ESF</span>
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>P = </span>
+                        <span id="p" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+
+                <div title="Miles de Funciones del Sistema (MF) → miles de funciones del sistema" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>CH = CPM = </span>
+                        <span>ESF / TDES</span> 
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>CH = CPM = </span>
+                        <span id="cpm" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+
+                <div title="Esfuerzo del Proyecto de Desarrollo (ESF) → personas / proyecto" class="flex flex-col items-center gap-2 shadow-[0_0_15px_rgba(206,204,204,1)] p-3 rounded-lg">
+                    <div class="flex gap-6 items-center">
+                        <span>CD = </span>
+                        <span>SPM o SMV * ESF</span> 
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <span>CD = </span>
+                        <span id="cd" class="px-4 py-1 bg-[#32B5FF] rounded-lg text-white text-center">0</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="flex items-center flex-col gap-8 py-10 px-8" id="fase4">
+            <div class="flex flex-col gap-1 items-center">
+                <span class="text-sm text-[#4678FB] font-bold">FASE IV</span>
+                <h2 class="font-bold text-lg">Distribución por Etapas</h2>
+            </div>
+
+            <article class="flex flex-col items-center gap-5">
+                <div class="">
+                    <div>
+                        <div class="grid grid-cols-2">
+                            <div></div>
+                            <div class="bg-black text-white p-3 text-center rounded-t-lg">Indicador</div>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div></div>
+                            <div class="p-3 text-center bg-[#32B5FF]">Esfuerzo (ESF)</div>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div class="bg-black p-3 text-white rounded-tl-lg flex items-center justify-center">Fase</div>
+                            <div class="grid grid-cols-2">
+                                <div class="p-3 flex justify-center items-center border-2">%</div>
+                                <div class="p-3 text-center border-2">Valor etapa</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center border-2">
+                                1. Estudio preliminar
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por1 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val1 p-3 flex justify-center items-center text-center border-l-2 border-b-2 bg-[#32B5FF]">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                2. Análisis
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por1 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val1 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                3. Diseño y Desarrollo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por1 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val1 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="px-8 py-3 flex items-center justify-start border-2">
+                                3.1. Diseño
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por1 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val1 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="px-8 py-3 flex items-center justify-start border-2">
+                                3.2. Desarrollo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por1 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val1 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                4. Prueba e Implementación
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por1  p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val1 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-center border-2">
+                                Total
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="porTotal1 p-3 flex justify-center items-center border-2">
+                                    0
+                                </div>
+                                <div class="valTotal1 p-3 flex justify-center items-center text-center border-2 ">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 rounded-bl-lg text-center flex items-center justify-center border-2">
+                                Testing - testeo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="tesPor1 p-3 flex justify-center items-center bg-[#32B5FF]">
+                                    0
+                                </div>
+                                <div class="tesVal1 p-3 rounded-br-lg flex justify-center items-center text-center border-l-2 bg-[#32B5FF]">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div>
+                        <div class="grid grid-cols-2">
+                            <div></div>
+                            <div class="bg-black text-white p-3 text-center rounded-t-lg">Indicador</div>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div></div>
+                            <div class="p-3 text-center bg-[#32B5FF]">Tiempo de Desarrollo (TDES)</div>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div class="bg-black p-3 text-white rounded-tl-lg flex items-center justify-center">Fase</div>
+                            <div class="grid grid-cols-2">
+                                <div class="p-3 flex justify-center items-center border-2">%</div>
+                                <div class="p-3 text-center border-2">Valor etapa</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center border-2">
+                                1. Estudio preliminar
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por2 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val2 p-3 flex justify-center items-center text-center border-l-2 border-b-2 bg-[#32B5FF]">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                2. Análisis
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por2 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val2 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                3. Diseño y Desarrollo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por2 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val2 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="px-8 py-3 flex items-center justify-start border-2">
+                                3.1. Diseño
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por2 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val2 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="px-8 py-3 flex items-center justify-start border-2">
+                                3.2. Desarrollo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por2 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val2 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                4. Prueba e Implementación
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por2 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val2 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-center border-2">
+                                Total
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="porTotal2 p-3 flex justify-center items-center border-2">
+                                    0
+                                </div>
+                                <div class="valTotal2 p-3 flex justify-center items-center text-center border-2 ">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 rounded-bl-lg text-center flex items-center justify-center border-2">
+                                Testing - testeo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="tesPor2 p-3 flex justify-center items-center bg-[#32B5FF]">
+                                    0
+                                </div>
+                                <div class="tesVal2 p-3 rounded-br-lg flex justify-center items-center text-center border-l-2 bg-[#32B5FF]">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div>
+                        <div class="grid grid-cols-2">
+                            <div></div>
+                            <div class="bg-black text-white p-3 text-center rounded-t-lg">Indicador</div>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div></div>
+                            <div class="p-3 text-center bg-[#32B5FF]">Costo de Desarrollo (CD)</div>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div class="bg-black p-3 text-white rounded-tl-lg flex items-center justify-center">Fase</div>
+                            <div class="grid grid-cols-2">
+                                <div class="p-3 flex justify-center items-center border-2">%</div>
+                                <div class="p-3 text-center border-2">Valor etapa</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                1. Estudio preliminar
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por3 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val3 p-3 flex justify-center items-center text-center border-l-2 border-b-2 bg-[#32B5FF]">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                2. Análisis
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por3 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val3 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                3. Diseño y Desarrollo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por3 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val3 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="px-8 py-3 flex items-center justify-start border-2">
+                                3.1. Diseño
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por3 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val3 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="px-8 py-3 flex items-center justify-start border-2">
+                                3.2. Desarrollo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por3 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val3 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-start border-2">
+                                4. Prueba e Implementación
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="por3 p-3 flex justify-center items-center bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                                <div class="val3 p-3 flex justify-center items-center text-center border-l-2 bg-[#32B5FF] border-b-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 flex items-center justify-center border-2">
+                                Total
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="porTotal3 p-3 flex justify-center items-center border-2">
+                                    0
+                                </div>
+                                <div class="valTotal3 p-3 flex justify-center items-center text-center border-2 ">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <div class="p-3 rounded-bl-lg text-center flex items-center justify-center border-2">
+                                Testing - testeo
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="tesPor3 p-3 flex justify-center items-center bg-[#32B5FF]">
+                                    0
+                                </div>
+                                <div class="tesVal3 p-3 rounded-br-lg flex justify-center items-center text-center border-l-2 bg-[#32B5FF]">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
